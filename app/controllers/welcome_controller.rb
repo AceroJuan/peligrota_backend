@@ -5,7 +5,7 @@ class WelcomeController < ActionController::API
   end
 
   def createIncident
-    Incident.create(indicent_params)
+    Incident.create(incident_params)
     render status:200, json: {message: 'ok'}.to_json
   end
 
@@ -20,7 +20,7 @@ class WelcomeController < ActionController::API
 
   private
   def incident_params
-    params.require(:incidents).permit(:longitude, :latitude, :danger_level, :description, :datetime, :creator_name)
+    params.require(:incident).permit(:longitude, :latitude, :danger_level, :description, :datetime, :creator_name)
   end
 
 end
