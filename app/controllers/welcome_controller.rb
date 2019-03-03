@@ -1,7 +1,6 @@
 class WelcomeController < ActionController::API
   def index
-    level = params["danger_level"]
-    @incidents = Incident.all.where()
+    @incidents = Incident.all
     render json: @incidents.to_json
   end
 

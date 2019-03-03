@@ -4,5 +4,4 @@ Rails.application.routes.draw do
   get "latest_incidents", to: "welcome#incidentList"
   post "create_incident", to: "welcome#createIncident"
   post "filter_data", to: "welcome#filter"
-  get "filter_data", to: "welcome#filter"
 end
