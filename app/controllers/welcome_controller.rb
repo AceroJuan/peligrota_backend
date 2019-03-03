@@ -1,6 +1,7 @@
 class WelcomeController < ActionController::API
   def index
-    @incidents = Incident.all
+    level = params["danger_level"]
+    @incidents = Incident.all.where()
     render json: @incidents.to_json
   end
 
@@ -15,12 +16,20 @@ class WelcomeController < ActionController::API
   end
 
   # Implements a service to do a filter
-  def Filter
+  def filter
+    filter_request = FilterService.new(filter_params)
+    result = filter_request.filter
+    render json: result.to_json
   end
 
   private
   def incident_params
-    params.require(:incident).permit(:longitude, :latitude, :danger_level, :description, :datetime, :creator_name)
+    params.permit(:longitude, :latitude, :danger_level, :description, :datetime, :creator_name)
+  end
+
+  private
+  def filter_params
+    params.permit( :datestart, :dateend, :timestart, :timeend, :danger_levels => [])
   end
 
 end
