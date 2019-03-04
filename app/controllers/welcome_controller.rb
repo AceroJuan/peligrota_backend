@@ -16,7 +16,7 @@ class WelcomeController < ActionController::API
 
   # Implements a service to do a filter
   def filter
-    filter_request = FilterService.new(filter_params)
+    filter_request = FilterService.new(params)
     result = filter_request.filter
     render json: result.to_json
   end
@@ -25,10 +25,4 @@ class WelcomeController < ActionController::API
   def incident_params
     params.permit(:longitude, :latitude, :danger_level, :description, :datetime, :creator_name)
   end
-
-  private
-  def filter_params
-    params.permit( :datestart, :dateend, :timestart, :timeend, :danger_levels => [])
-  end
-
 end
