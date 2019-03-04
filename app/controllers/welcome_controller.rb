@@ -4,6 +4,10 @@ class WelcomeController < ActionController::API
     render json: @incidents.to_json
   end
 
+  def test
+    render json: {status: :ok}.to_json
+  end
+
   def createIncident
     Incident.create(incident_params)
     render status:200, json: {message: 'ok'}.to_json
