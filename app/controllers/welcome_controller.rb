@@ -1,7 +1,7 @@
 class WelcomeController < ActionController::API
   def index
     @incidents = Incident.all
-    render json: @incidents.to_json
+    render json: @incidents.map(&:api_format).to_json
   end
 
   def createIncident
