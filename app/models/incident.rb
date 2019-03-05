@@ -7,7 +7,7 @@ class Incident < ApplicationRecord
       description: description,
       latitude: latitude,
       longitude: longitude,
-      datetime: datetime.strftime("%A, %d %b %Y %l:%M %p")
+      datetime: datetime&.strftime("%A, %d %b %Y %l:%M %p")
     }
   end
 end
