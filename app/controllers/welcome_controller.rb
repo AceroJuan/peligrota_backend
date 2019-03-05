@@ -1,7 +1,7 @@
 class WelcomeController < ActionController::API
   def index
     @incidents = Incident.all
-    render json: @incidents.to_json
+    render json: @incidents.map(&:api_format).to_json
   end
 
   def test
@@ -15,7 +15,7 @@ class WelcomeController < ActionController::API
 
   def incidentList
     @incident_list = Incident.order('created_at DESC')[0...5]
-    render json: @incident_list.to_json
+    render json: @incident_list.map(&:api_format).to_json
   end
 
   # Implements a service to do a filter
