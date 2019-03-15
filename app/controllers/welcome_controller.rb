@@ -9,8 +9,8 @@ class WelcomeController < ActionController::API
   end
 
   def createIncident
-    Incident.create(incident_params)
-    render status:200, json: {message: 'ok'}.to_json
+    incident = Incident.create(incident_params)
+    render status:200, json: {incident: incident}.to_json
   end
 
   def incidentList
